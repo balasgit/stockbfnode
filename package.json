@@ -18,7 +18,7 @@
     "clean": "rimraf dist",
     "test": "jest --coverage",
     "tdd": "jest --watch",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean --no-git-tag-version",
     "build": "tsc",
     "postbuild": "npm run swagger",
     "swagger": "swaggerGen -c ./swagger.config.json",
