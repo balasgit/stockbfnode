@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: balasgit.stockbfnode
+  labels:
+    app: stockbfnode
+spec:
+  triggers:
+    - type: GitHub
+      github:
+        secret: secret101
+  source:
+    git:
+      uri: 'https://github.com/balasgit/stockbfnode.git'
+      ref: master
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: Jenkinsfile
+      env:
+        - name: CLOUD_NAME
+          value: openshift
+        - name: NAMESPACE
+          value: dev-bala-austin
+        - name: BRANCH
+          value: master
